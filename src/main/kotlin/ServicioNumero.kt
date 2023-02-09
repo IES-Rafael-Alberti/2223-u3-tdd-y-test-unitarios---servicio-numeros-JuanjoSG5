@@ -1,3 +1,4 @@
+package servicio
 class ServicioNumero(private var min: Int = 0, private var max: Int = 100) {
 
     private var lista = mutableListOf<Int>()
