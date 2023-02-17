@@ -1,40 +1,50 @@
 
-import generadorCartones.GeneradorCartones
+import cartones.Carton
+import casilla.Casilla
+import casilla.EstadoCasilla
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.ints.shouldBeBetween
 import io.kotest.matchers.maps.shouldContainKeys
-import io.kotest.matchers.shouldBe
-import io.mockk.mockk
-import io.mockk.mockkObject
+import io.kotest.matchers.types.shouldBeInstanceOf
 
 class GeneradorCartonesTest : DescribeSpec({
-
     describe("Inicializacion generador cartones") {
-        it("es un singleton"){
-            val generador = mockk<GeneradorCartones>()
-            println(generador.creaCarton(0))
-
-        }
-        describe("que permite") {
+        describe("que permite ") {
             it("crear un carton") {
-                mockkObject(GeneradorCartones)
-                val generador = mockk<GeneradorCartones>()
+                val generador = GeneradorCartones
+                val carton = generador.creaCarton(0).shouldBeInstanceOf<Array<Array<Casilla>>>()
+                carton.forEach { fila ->
+                    fila.forEach {
+                        it.fila.shouldBeBetween(0, 4)
+                        it.columna.shouldBeBetween(0, 4)
 
-                generador.creaCarton(0).shouldBe {
-                    Array(5) { Array(5) { 0 } }
+                    }
                 }
             }
             it("Crear un conjunto de cartones ") {
-                mockkObject(GeneradorCartones)
-                val generador = mockk<GeneradorCartones>()
-                generador.conjuntoCartones(5).shouldContainKeys(0,1,2,3,4)
+                val carton = Carton(0)
+                carton.creaConjuntoCartones(5).shouldContainKeys(0, 1, 2, 3, 4)
             }
-            describe(
-                "Comprobar que cuando sale un numero del bombo este se encuentra o no en los" +
-                        " distintos cartones ") {
-
-                //val generador = Generad
 
 
+            it("Cada casilla esta sin marcar") {
+                val generador = GeneradorCartones
+                val carton = generador.creaCarton(0)
+                carton.forEach { fila ->
+                    fila.forEach {
+                        it.estado.shouldBeInstanceOf<EstadoCasilla>()
+
+                    }
+                }
+            }
+            it("Los numeros en el carton son los solicitados") {
+                val generador = GeneradorCartones
+                val carton = generador.creaCarton(0)
+                carton.forEach { fila ->
+                    fila.forEach {
+                        it.numeroC.shouldBeBetween(0, 75)
+                    }
+                }
             }
         }
     }

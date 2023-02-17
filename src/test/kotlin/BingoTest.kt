@@ -1,5 +1,5 @@
 
-import generadorCartones.GeneradorCartones
+import cartones.Carton
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 
@@ -7,14 +7,15 @@ class BingoTest: DescribeSpec( {
     describe("Un carton canta bingo cuando"){
         it("todas las casillas del carton estan marcadas"){
             val generador  = GeneradorCartones
-            val carton = generador.creaCarton(0)
+            val cartonRelleno = generador.creaCarton(0)
+            val carton = Carton(0)
             val bombo = Bombo
             val bingo = Bingo
-            while (!bingo.compruebaBingo(carton)){
+            while (!bingo.compruebaBingo(cartonRelleno)){
                 val numero = bombo.generaNumero()
-                generador.marcador(numero,0)
+                carton.marcador(cartonRelleno, numero)
             }
-            bingo.compruebaBingo(carton).shouldBe(true )
+            bingo.compruebaBingo(cartonRelleno).shouldBe(true )
         }
     }
 })

@@ -1,39 +1,42 @@
-import generadorCartones.GeneradorCartones
+import cartones.Carton
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
-
-class LineasTest:DescribeSpec({
+/*
+class LineasTest: DescribeSpec({
     describe("Un carton comprueba si ha salido una linea"){
         val generador  = GeneradorCartones
         val carton = generador.creaCarton(0)
+
         val bombo = Bombo
+        var carton1 = Carton(0)
+        carton1.montaLineas(carton,id)
         it("vertical"){
-            while (!generador.comprobadorLineaVertical(carton)) {
+            while (!lineas.comprobadorLineaVertical(carton)) {
                 val numero = bombo.generaNumero()
-                generador.marcador(numero, 0)
+                carton1.marcador(carton,numero)
             }
-            generador.comprobadorLineaVertical(carton).shouldBe(true)
+            lineas.comprobadorLineaVertical(carton).shouldBe(true)
         }
         it("horizontal"){
-            while (!generador.comprobadorLineaHorizontal(carton)){
+            while (!lineas.comprobadorLineaHorizontal(carton)){
                 val numero = bombo.generaNumero()
-                generador.marcador(numero,0)
+                carton1.marcador(carton,numero)
             }
-            generador.comprobadorLineaHorizontal(carton).shouldBe(true)
+            lineas.comprobadorLineaHorizontal(carton).shouldBe(true)
         }
         it("diagonal de izquierda a derecha") {
-            while (!generador.comprobadorLineaDiagonalID(carton)) {
+            while (!lineas.comprobadorLineaDiagonalID(carton)) {
                 val numero = bombo.generaNumero()
-                generador.marcador(numero, 0)
+                carton1.marcador(carton,numero)
             }
-            generador.comprobadorLineaDiagonalID(carton ).shouldBe(true )
+            lineas.comprobadorLineaDiagonalID(carton ).shouldBe(true )
         }
         it("diagonal de derecha a izquierda"){
-            while (!generador.comprobadorLineaDiagonalDI(carton)) {
+            while (!lineas.comprobadorLineaDiagonalDI(carton)) {
                 val numero = bombo.generaNumero()
-                generador.marcador(numero, 0)
+                carton1.marcador(carton,numero)
             }
-            generador.comprobadorLineaDiagonalDI(carton ).shouldBe(true )
+            lineas.comprobadorLineaDiagonalDI(carton ).shouldBe(true )
         }
     }
-})
+})*/

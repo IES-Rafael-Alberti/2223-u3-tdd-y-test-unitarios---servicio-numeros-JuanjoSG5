@@ -35,3 +35,9 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.5.4")
     testImplementation("io.kotest:kotest-property:5.5.4")
 }
+
+var mockKVersion = "1.13.4"
+
+dependencies {
+    testImplementation("io.mockk:mockk:$mockKVersion")
+}

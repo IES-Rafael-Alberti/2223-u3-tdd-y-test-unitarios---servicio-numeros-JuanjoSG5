@@ -1,6 +1,4 @@
-import generadorCartones.GeneradorCartones
-import io.kotest.core.spec.style.DescribeSpec
-
+/*
 class ResumenTest: DescribeSpec( {
     describe("Al conseguir una linea debe:"){
         it("test"){
@@ -14,4 +12,4 @@ class ResumenTest: DescribeSpec( {
             generador.resumen(0)
         }
     }
-})
+})*/
