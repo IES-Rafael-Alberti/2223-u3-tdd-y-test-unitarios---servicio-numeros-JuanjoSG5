@@ -1,9 +1,15 @@
 import servicio.ServicioNumero
-object Bombo {
+object Bombo: Subscriber  {
     private val generador = ServicioNumero(1,76)
     private val numeros = generador.restoNumero()
-    fun generaNumero(): Int {
+    init{
         numeros.shuffle()
+    }
+    fun generaNumero(): Int? {
+        if (numeros.isEmpty()){
+            println("ha ocurrido un error ")
+            return null
+        }
         return numeros.removeFirst()
     }
 

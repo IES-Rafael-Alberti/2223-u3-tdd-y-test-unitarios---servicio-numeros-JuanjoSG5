@@ -12,7 +12,7 @@ class GeneradorCartonesTest : DescribeSpec({
         describe("que permite ") {
             it("crear un carton") {
                 val generador = GeneradorCartones
-                val carton = generador.creaCarton(0).shouldBeInstanceOf<Array<Array<Casilla>>>()
+                 val carton = generador.creaCarton(0).shouldBeInstanceOf<Array<Array<Casilla>>>()
                 carton.forEach { fila ->
                     fila.forEach {
                         it.fila.shouldBeBetween(0, 4)
@@ -22,8 +22,8 @@ class GeneradorCartonesTest : DescribeSpec({
                 }
             }
             it("Crear un conjunto de cartones ") {
-                val carton = Carton(0)
-                carton.creaConjuntoCartones(5).shouldContainKeys(0, 1, 2, 3, 4)
+                val carton = Carton()
+                carton.creaCartones(5).shouldContainKeys(0, 1, 2, 3, 4)
             }
 
 

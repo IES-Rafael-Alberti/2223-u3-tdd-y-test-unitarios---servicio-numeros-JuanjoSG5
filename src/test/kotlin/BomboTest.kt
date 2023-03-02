@@ -6,7 +6,7 @@ class BomboTest : DescribeSpec({
         it("genera un numero "){
             val bombo = Bombo
             val numero = bombo.generaNumero()
-            numero.shouldBeBetween(1,76)
+            numero?.shouldBeBetween(1,76)
         }
     }
 })

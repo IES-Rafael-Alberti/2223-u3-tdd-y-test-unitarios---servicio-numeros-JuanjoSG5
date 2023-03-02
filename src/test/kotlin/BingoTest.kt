@@ -8,14 +8,14 @@ class BingoTest: DescribeSpec( {
         it("todas las casillas del carton estan marcadas"){
             val generador  = GeneradorCartones
             val cartonRelleno = generador.creaCarton(0)
-            val carton = Carton(0)
+            val carton = Carton()
             val bombo = Bombo
             val bingo = Bingo
-            while (!bingo.compruebaBingo(cartonRelleno)){
+            while (!bingo.compruebaBingo(cartonRelleno,0)){
                 val numero = bombo.generaNumero()
-                carton.marcador(cartonRelleno, numero)
+                numero?.let { carton.marcador(0, it) }
             }
-            bingo.compruebaBingo(cartonRelleno).shouldBe(true )
+            bingo.compruebaBingo(cartonRelleno,0).shouldBe(true )
         }
     }
 })
