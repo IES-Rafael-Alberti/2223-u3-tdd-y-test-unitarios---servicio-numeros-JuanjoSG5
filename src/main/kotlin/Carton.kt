@@ -3,17 +3,17 @@ package cartones
 import GeneradorCartones
 import Linea
 import LineaCantada
-import Subscriber
 import casilla.Casilla
 import casilla.EstadoCasilla
 
 
-open class Carton : Subscriber {
+open class Carton {
 
-    private val conjuntoNumeros = mutableListOf<Int>()
+    internal val conjuntoNumeros = mutableListOf<Int>()
     internal val conjunto = mutableMapOf<Int, Array<Array<Casilla>>>()
     private var estadoLineas = mutableListOf<Linea>()
     private val estadoLineasPorCarton = mutableMapOf<Int, MutableList<Linea>>()
+
 
 
     fun creaCartones(cantidad: Int): MutableMap<Int, Array<Array<Casilla>>> {
@@ -29,17 +29,20 @@ open class Carton : Subscriber {
         return conjunto
     }
 
-    fun marcador(idCarton: Int, numero: Int) {
-        var carton = conjunto[idCarton]
-        carton?.forEach { fila ->
-            fila.forEach {
-                if (numero == it.numeroC && it.estado != EstadoCasilla.NULL) {
-                    it.estado = EstadoCasilla.MARCADA
-
+    fun marcador(numero: Int?) {
+        var id = 0
+        conjunto.values.forEach{carton->
+            carton.forEach { fila ->
+                fila.forEach {
+                    if (numero == it.numeroC && it.estado != EstadoCasilla.NULL) {
+                        it.estado = EstadoCasilla.MARCADA
+                        println("El numero $numero se encuentra en el carton: $id")
+                    }
                 }
             }
+            id++
         }
-        conjuntoNumeros.add(numero)
+        numero?.let { conjuntoNumeros.add(it) }
     }
 
 
@@ -100,7 +103,7 @@ open class Carton : Subscriber {
 
         fun diagonalDI2() {
             val casillasLinea = mutableListOf<Casilla>()
-            for (fila in 0 until dimension) {
+            for (fila in 0 .. dimension) {
                 if (carton[fila][dimension - fila].estado != EstadoCasilla.NULL) {
                     casillasLinea.add(carton[fila][dimension - fila])
                 }
@@ -149,25 +152,25 @@ open class Carton : Subscriber {
         }
     }
 
-    //TODO añdir una manera de que subscriber pueda acceder al conjunto de cartones, parano tener que usar carton
-    // en la funcion de abajo
-    fun compruebaLineaCarton(id:Int): Pair<Boolean, Int> {
+    fun compruebaLineaCarton() {
         var contador = 0
-        val lineas = estadoLineasPorCarton[id]
-        lineas?.forEach { linea ->
-            linea.linea.forEach {
-                if (it.estado == EstadoCasilla.MARCADA) {
-                    contador++
-                    if (contador == 20) {
-                        updateLinea()
-                        linea.cantada = LineaCantada.SI
-                        return Pair(true, linea.idCarton)
+        estadoLineasPorCarton.values.forEach { conjuntoLineas ->
+            conjuntoLineas.forEach {
+                it.linea.forEach { casilla ->
+                    if (casilla.estado == EstadoCasilla.MARCADA) {
+                        contador++
+                        if (contador == 4 ) {
+                            it.cantada = LineaCantada.SI
+                            println("Ha cantado la linea ${it.linea} en el carton ${it.idCarton}")
+
+                        }
                     }
+
                 }
+                contador = 0
             }
         }
 
-        return Pair(false, -1)
     }
 }
 

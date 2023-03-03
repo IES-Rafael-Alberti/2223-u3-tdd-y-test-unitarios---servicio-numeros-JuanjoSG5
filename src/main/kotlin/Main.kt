@@ -1,8 +1,5 @@
 
 fun main() {
-    var generador = GeneradorCartones
-    var bingo = Bingo
-    var bombo = Bombo
-
-
+    val game = Juego
+    game.partida()
 }

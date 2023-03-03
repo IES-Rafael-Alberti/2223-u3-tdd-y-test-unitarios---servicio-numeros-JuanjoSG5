@@ -6,16 +6,15 @@ import io.kotest.matchers.shouldBe
 class BingoTest: DescribeSpec( {
     describe("Un carton canta bingo cuando"){
         it("todas las casillas del carton estan marcadas"){
-            val generador  = GeneradorCartones
-            val cartonRelleno = generador.creaCarton(0)
             val carton = Carton()
+            val cartones = carton.creaCartones(2)
             val bombo = Bombo
             val bingo = Bingo
-            while (!bingo.compruebaBingo(cartonRelleno,0)){
+            while (!bingo.compruebaBingo(carton.conjunto)){
                 val numero = bombo.generaNumero()
-                numero?.let { carton.marcador(0, it) }
+                numero?.let { carton.marcador(0) }
             }
-            bingo.compruebaBingo(cartonRelleno,0).shouldBe(true )
+            bingo.compruebaBingo(cartones).shouldBe(true )
         }
     }
 })

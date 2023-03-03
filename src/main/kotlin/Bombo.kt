@@ -1,5 +1,5 @@
 import servicio.ServicioNumero
-object Bombo: Subscriber  {
+object Bombo  {
     private val generador = ServicioNumero(1,76)
     private val numeros = generador.restoNumero()
     init{
