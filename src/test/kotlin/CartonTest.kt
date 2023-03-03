@@ -2,6 +2,7 @@
 import cartones.Carton
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.shouldBe
 
 class CartonTest:DescribeSpec({
     describe("Un carton"){
@@ -14,6 +15,19 @@ class CartonTest:DescribeSpec({
             carton.marcador(numero)
             carton.conjuntoNumeros.shouldContain(numero)
         }
+        it("permite crear tablas para mostrar la informacion de los cartones"){
+            var carton = Carton()
+            carton.creaCartones(1)
+            var test = Kformat.table
+            carton.creaTabla().shouldBe(Kformat.table)
+        }
     }
-
+    describe("test"){
+        it("test"){
+            var carton = Carton()
+            carton.creaCartones(2)
+            carton.mostrarCarton(0)
+            carton.mostrarCarton(1)
+        }
+    }
 })

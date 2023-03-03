@@ -1,5 +1,8 @@
 
 fun main() {
     val game = Juego
-    game.partida()
+    game.partida("")
+
+}
+
 }

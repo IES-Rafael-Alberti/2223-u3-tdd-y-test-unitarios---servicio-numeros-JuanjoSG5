@@ -90,6 +90,10 @@ open class Carton {
 
     }
 
+    fun creaTabla() {
+
+    }
+
     private fun montaDiagonalesDI(dimension: Int, carton: Array<Array<Casilla>>, id: Int) {
         fun diagonalDI1() {
             val casillasLinea = mutableListOf<Casilla>()
