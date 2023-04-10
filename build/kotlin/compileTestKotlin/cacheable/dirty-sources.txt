@@ -1,0 +1,6 @@
+C:\Users\Manuel\Documents\GitHub\2223-u3-tdd-y-test-unitarios---servicio-numeros-JuanjoSG5\src\test\kotlin\BomboTest.kt
+C:\Users\Manuel\Documents\GitHub\2223-u3-tdd-y-test-unitarios---servicio-numeros-JuanjoSG5\src\test\kotlin\BingoTest.kt
+C:\Users\Manuel\Documents\GitHub\2223-u3-tdd-y-test-unitarios---servicio-numeros-JuanjoSG5\src\test\kotlin\CartonTest.kt
+C:\Users\Manuel\Documents\GitHub\2223-u3-tdd-y-test-unitarios---servicio-numeros-JuanjoSG5\src\test\kotlin\JuegoTest.kt
+C:\Users\Manuel\Documents\GitHub\2223-u3-tdd-y-test-unitarios---servicio-numeros-JuanjoSG5\src\test\kotlin\GeneradorCartonesTest.kt
+C:\Users\Manuel\Documents\GitHub\2223-u3-tdd-y-test-unitarios---servicio-numeros-JuanjoSG5\src\test\kotlin\test.kt
